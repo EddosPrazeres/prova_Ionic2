@@ -1,7 +1,13 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Cadastro de novo usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      Login
+      Registrar-se
     </ion-card-header>
     <ion-card-content>
       <ion-grid>
@@ -22,39 +28,29 @@
               <ion-label floating>
                 Senha
               </ion-label>
-              <ion-input type="password" name="senha"></ion-input>
+              <ion-input name="senha" type="password"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
 
-        <ion-row>
+         <ion-row>
           <ion-col>
-            <button ion-button full color="primary">
-              Entrar
+            <button ion-button full>
+              Adcionar Todo
             </button>
           </ion-col>
         </ion-row>
 
         <ion-row>
-          <ion-col width-50>
-            <button ion-button full class="BTLogin">
-              Login com Facebook
-            </button>
-          </ion-col>
-          <ion-col width-50>
-            <button ion-button full class="BTLogin">
-              Login com Google
-            </button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
           <ion-col>
-            <a (click)="Cadastrar()">
-             Criar uma nova conta
-            </a>
+            <button ion-button full>
+              Cadastrar
+            </button>
           </ion-col>
         </ion-row>
+
       </ion-grid>
     </ion-card-content>
   </ion-card>
+
 </ion-content>
