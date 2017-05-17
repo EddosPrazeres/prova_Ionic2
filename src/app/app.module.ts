@@ -9,6 +9,17 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 
+import firebase from 'firebase';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
+    authDomain: "listatarefasionic2.firebaseapp.com",
+    databaseURL: "https://listatarefasionic2.firebaseio.com",
+    projectId: "listatarefasionic2",
+    storageBucket: "listatarefasionic2.appspot.com",
+    messagingSenderId: "424572934421"
+  };
+
 @NgModule({
   declarations: [
     MyApp,
@@ -33,4 +44,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(){
+    firebase.initializeApp(firebaseConfig);
+  }
+}
