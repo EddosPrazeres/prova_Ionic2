@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { PGCadastroC } from "../cadastro/cadastro";
 import { PGTarefaLista } from "../tarefa-lista/tarefa-lista";
 import { ProviderLoginC } from "../../providers/login/login";
@@ -16,8 +16,7 @@ export class PGLoginC implements OnInit {
   PerfilUsuario: any = null;
 
   constructor(public navCtrl: NavController,
-              public loginProvider: ProviderLoginC,
-              public menuCtrl: MenuController) {}
+              public loginProvider: ProviderLoginC) {}
 
  
 
@@ -25,17 +24,14 @@ export class PGLoginC implements OnInit {
     this.loginProvider.LoginSucessoEE.subscribe(
       user => {
         this.PerfilUsuario = user;
-        //this.navCtrl.setRoot(PGTarefaLista);
+         this.navCtrl.setRoot(PGTarefaLista);
       }
     );
     this.loginProvider.LoginFalhaEE.subscribe(
       error => console.log(error)
     )
   }
-
-  EntrarPGTarefaLista(){
-    this.navCtrl.setRoot(PGTarefaLista);
-  }
+  
   ngOnInit(){
     this._credencial = new CredencialC();
   }

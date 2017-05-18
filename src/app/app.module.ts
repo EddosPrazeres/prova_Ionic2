@@ -10,6 +10,7 @@ import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
 import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
+import { TestandoPage } from '../pages/testando/testando';
 
 import { HttpModule } from '@angular/http';
 
@@ -17,6 +18,7 @@ import firebase from 'firebase';
 
 import { ProviderLoginC } from '../providers/login/login';
 import { ProviderTarefaProvider } from '../providers/provider-tarefa/provider-tarefa';
+
 
 import { Facebook } from '@ionic-native/facebook'
 
@@ -35,7 +37,7 @@ const firebaseCfg = {
     PGLoginC,
     PGCadastroC,
     PGTarefaLista,
-    PGTarefaCadastro,
+    PGTarefaCadastro
   ],
   imports: [
     BrowserModule,
