@@ -15,6 +15,10 @@ npm install
 - Tela de Login
 - Integração com Facebook(Login)
 
+#### CRUD para as tarefas:
+
+- Tela de tarefas
+
 #### Conteúdo Extra
 
 - Integração com Firebase
