@@ -13,6 +13,7 @@ import { CredencialC } from "../../models/credencial";
 })
 export class PGLoginC implements OnInit {
   private _credencial: CredencialC;
+  PerfilUsuario: any = null;
 
   constructor(public navCtrl: NavController,
               public loginProvider: ProviderLoginC,
@@ -23,10 +24,8 @@ export class PGLoginC implements OnInit {
    ionViewDidLoad() {
     this.loginProvider.LoginSucessoEE.subscribe(
       user => {
-        this.menuCtrl.enable(true);
-        this.menuCtrl.swipeEnable(true);
-        console.log("Entrou!");
-        this.navCtrl.setRoot(PGTarefaLista);
+        this.PerfilUsuario = user;
+        //this.navCtrl.setRoot(PGTarefaLista);
       }
     );
     this.loginProvider.LoginFalhaEE.subscribe(
@@ -34,6 +33,9 @@ export class PGLoginC implements OnInit {
     )
   }
 
+  EntrarPGTarefaLista(){
+    this.navCtrl.setRoot(PGTarefaLista);
+  }
   ngOnInit(){
     this._credencial = new CredencialC();
   }

@@ -23,4 +23,20 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
+  
+  <ion-card *ngIf="PerfilUsuario">
+    <ion-card-content>
+      <ion-item>
+        <ion-avatar item-left>
+        <img [src]="PerfilUsuario.photoURL">
+        </ion-avatar>
+        <h2> {{PerfilUsuario.displayName}}</h2>
+        <button ion-button full (click)="EntrarPGTarefaLista()">
+          Entrar
+        </button>
+      </ion-item>
+      
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

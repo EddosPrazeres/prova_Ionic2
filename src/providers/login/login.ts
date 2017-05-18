@@ -2,6 +2,7 @@ import {Injectable, EventEmitter, NgZone} from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CredencialC } from "../../models/credencial";
+import { Facebook } from '@ionic-native/facebook';
 
 import firebase from "firebase";
 
@@ -15,8 +16,10 @@ export class ProviderLoginC
 	LoginFalhaEE:EventEmitter<any>;
 	DeslogarEE:EventEmitter<any>;
 
-
-	constructor(public http: Http, public ngZone: NgZone) {
+	constructor(public http: Http, 
+				public ngZone: NgZone, 
+				private facebook: Facebook) {
+					
 		this.LoginSucessoEE = new EventEmitter();
 		this.LoginFalhaEE = new EventEmitter();
 		this.DeslogarEE = new EventEmitter();

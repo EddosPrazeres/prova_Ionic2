@@ -17,6 +17,8 @@ import firebase from 'firebase';
 import { ProviderLoginC } from '../providers/login/login';
 import { ProviderTarefaProvider } from '../providers/provider-tarefa/provider-tarefa';
 
+import { Facebook } from '@ionic-native/facebook'
+
 const firebaseCfg = {
     apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
     authDomain: "listatarefasionic2.firebaseapp.com",
@@ -50,7 +52,8 @@ const firebaseCfg = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProviderLoginC,
-    ProviderTarefaProvider
+    ProviderTarefaProvider,
+    Facebook
   ]
 })
 export class AppModule {
