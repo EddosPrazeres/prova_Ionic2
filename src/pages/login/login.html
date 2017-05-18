@@ -29,7 +29,7 @@
 
         <ion-row>
           <ion-col>
-            <button ion-button full color="primary">
+            <button ion-button full color="primary" (click)="LoginCredencial()">
               Entrar
             </button>
           </ion-col>
@@ -37,23 +37,25 @@
 
         <ion-row>
           <ion-col width-50>
-            <button ion-button full class="BTLogin">
+            <button ion-button full class="BTLogin" (click)="LoginFacebook()">
               Login com Facebook
             </button>
           </ion-col>
           <ion-col width-50>
-            <button ion-button full class="BTLogin">
+            <button ion-button full class="BTLogin"  (click)="LoginGoogle()">
               Login com Google
             </button>
           </ion-col>
         </ion-row>
+
         <ion-row>
           <ion-col>
-            <a (click)="Cadastrar()">
-             Criar uma nova conta
-            </a>
+            <a (click)="Cadastrar()"> 
+             Criar uma nova conta 
+            </a> 
           </ion-col>
         </ion-row>
+
       </ion-grid>
     </ion-card-content>
   </ion-card>

@@ -1,24 +1,49 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, MenuController } from 'ionic-angular';
+import { PGCadastroC } from "../cadastro/cadastro";
+import { ProviderLoginC } from "../../providers/login/login";
+import { CredencialC } from "../../models/credencial";
 
-import { CadastroPage } from '../cadastro/cadastro';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
+export class PGLoginC implements OnInit {
+  private _credencial: CredencialC;
+
+  constructor(public navCtrl: NavController,
+              public loginProvider: ProviderLoginC) {}
+
+   ionViewDidLoad() {
+    this.loginProvider.LoginSucessoEE.subscribe(
+      user => console.log(user)
+    )
+    this.loginProvider.LoginFalhaEE.subscribe(
+      error => console.log(error)
+    )
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  ngOnInit(){
+    this._credencial = new CredencialC();
   }
 
+  LoginCredencial(){
+    this.loginProvider.LoginCredencial(this._credencial);
+  }
+
+  LoginGoogle(){
+    this.loginProvider.LoginGoogle();
+  }
+
+  LoginFacebook(){
+    this.loginProvider.LoginFacebook();
+  }
+
+  Sair() {
+    this.loginProvider.Sair();
+  }
   Cadastrar(){
-    this.navCtrl.push(CadastroPage)
+ 		this.navCtrl.push(PGCadastroC);
   }
-
 }

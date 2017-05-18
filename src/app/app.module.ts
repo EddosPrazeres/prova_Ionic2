@@ -6,12 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
-import { CadastroPage } from '../pages/cadastro/cadastro';
+import { PGLoginC } from '../pages/login/login';
+import { PGCadastroC } from '../pages/cadastro/cadastro';
+
+import { HttpModule } from '@angular/http';
 
 import firebase from 'firebase';
 
-const firebaseConfig = {
+import { ProviderLoginC } from '../providers/login/login';
+
+const firebaseCfg = {
     apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
     authDomain: "listatarefasionic2.firebaseapp.com",
     databaseURL: "https://listatarefasionic2.firebaseio.com",
@@ -24,28 +28,30 @@ const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    LoginPage,
-    CadastroPage
+    PGLoginC,
+    PGCadastroC
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
-    CadastroPage
+    PGLoginC,
+    PGCadastroC
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProviderLoginC
   ]
 })
 export class AppModule {
   constructor(){
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseCfg);
   }
 }

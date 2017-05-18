@@ -1,24 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the CadastroPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ProviderLoginC } from "../../providers/login/login";
+import { CredencialC } from "../../models/credencial";
+
 @IonicPage()
 @Component({
   selector: 'page-cadastro',
   templateUrl: 'cadastro.html',
 })
-export class CadastroPage {
+export class PGCadastroC {
+  credencial: CredencialC;
+  constructor(public navCtrl: NavController,
+  			      public loginProvider: ProviderLoginC) {}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+   ngOnInit(){
+    this.credencial = new CredencialC();
+   }
+
+  Cadastrar(){
+  	this.loginProvider.cadastrarUsuario(this.credencial);
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroPage');
-  }
-
 }
