@@ -13,4 +13,4 @@ import { PGLoginC } from './login';
     PGLoginC
   ]
 })
-export class LoginPageModule {}
+export class PGLoginCModule {}

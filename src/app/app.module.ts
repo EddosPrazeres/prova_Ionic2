@@ -5,14 +5,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+
 import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
+import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 
 import { HttpModule } from '@angular/http';
 
 import firebase from 'firebase';
 
 import { ProviderLoginC } from '../providers/login/login';
+import { ProviderTarefaProvider } from '../providers/provider-tarefa/provider-tarefa';
 
 const firebaseCfg = {
     apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
@@ -27,7 +30,8 @@ const firebaseCfg = {
   declarations: [
     MyApp,
     PGLoginC,
-    PGCadastroC
+    PGCadastroC,
+    PGTarefaLista,
   ],
   imports: [
     BrowserModule,
@@ -38,13 +42,15 @@ const firebaseCfg = {
   entryComponents: [
     MyApp,
     PGLoginC,
-    PGCadastroC
+    PGCadastroC,
+    PGTarefaLista,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ProviderLoginC
+    ProviderLoginC,
+    ProviderTarefaProvider
   ]
 })
 export class AppModule {

@@ -3,9 +3,9 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
+import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 
 @Component({
   templateUrl: 'app.html'

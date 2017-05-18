@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { PGCadastroC } from "../cadastro/cadastro";
+import { PGTarefaLista } from "../tarefa-lista/tarefa-lista";
 import { ProviderLoginC } from "../../providers/login/login";
 import { CredencialC } from "../../models/credencial";
+
 
 
 @Component({
@@ -13,12 +15,20 @@ export class PGLoginC implements OnInit {
   private _credencial: CredencialC;
 
   constructor(public navCtrl: NavController,
-              public loginProvider: ProviderLoginC) {}
+              public loginProvider: ProviderLoginC,
+              public menuCtrl: MenuController) {}
+
+ 
 
    ionViewDidLoad() {
     this.loginProvider.LoginSucessoEE.subscribe(
-      user => console.log(user)
-    )
+      user => {
+        this.menuCtrl.enable(true);
+        this.menuCtrl.swipeEnable(true);
+        console.log("Entrou!");
+        this.navCtrl.setRoot(PGTarefaLista);
+      }
+    );
     this.loginProvider.LoginFalhaEE.subscribe(
       error => console.log(error)
     )

@@ -13,4 +13,4 @@ import { PGCadastroC } from './cadastro';
     PGCadastroC
   ]
 })
-export class CadastroPageModule {}
+export class PGCadastroCModule {}
