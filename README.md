@@ -14,6 +14,7 @@ npm install
 
 - Tela de Login
 - Integração com Facebook(Login)
+- Plugin do Facebook (Opção de ver Nome e Foto do usuário) 
 
 #### CRUD para as tarefas:
 
