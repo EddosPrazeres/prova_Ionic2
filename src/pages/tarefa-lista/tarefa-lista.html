@@ -5,14 +5,20 @@
     </button>
     <ion-title>Minhas Tarefas</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
-  
-</ion-content>
+      <button ion-item>
+        Teste - Tarefa 1
+      </button>
 
+      <button ion-item>
+        Teste - Tarefa 1
+      </button>
+</ion-content>
 <ion-fab bottom right>
-    <button ion-fab color='primary'>
+    <button ion-fab color='primary' (click)="cadastrarTarefa()">
         <ion-icon name='add'></ion-icon>
     </button>
 </ion-fab>

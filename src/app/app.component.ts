@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
 import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
+import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
 
 @Component({
   templateUrl: 'app.html'

@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
 import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
+import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
 
 import { HttpModule } from '@angular/http';
 
@@ -34,6 +35,7 @@ const firebaseCfg = {
     PGLoginC,
     PGCadastroC,
     PGTarefaLista,
+    PGTarefaCadastro,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ const firebaseCfg = {
     PGLoginC,
     PGCadastroC,
     PGTarefaLista,
+    PGTarefaCadastro
   ],
   providers: [
     StatusBar,
