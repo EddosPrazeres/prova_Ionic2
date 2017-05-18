@@ -17,7 +17,5 @@ npm install
 
 #### Conteúdo Extra
 
-- Tela de Cadastro
-- Função de Cadastrar
 - Integração com Firebase
 - Integração com Google(Login)
