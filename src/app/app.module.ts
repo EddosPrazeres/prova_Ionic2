@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
 
@@ -27,7 +26,6 @@ const firebaseCfg = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     PGLoginC,
     PGCadastroC
   ],
@@ -39,7 +37,6 @@ const firebaseCfg = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     PGLoginC,
     PGCadastroC
   ],
