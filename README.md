@@ -1,6 +1,4 @@
-# Título do Projeto
-
-Desafio de Ionic 2
+# Desafio de Ionic 2
 
 ### Pré-requisitos
 
