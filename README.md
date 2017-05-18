@@ -12,9 +12,14 @@ npm install
 
 ### Conteúdo feito
 
+#### Login através do Facebook
+
 - Tela de Login
+- Integração com Facebook(Login)
+
+#### Conteúdo Extra
+
 - Tela de Cadastro
 - Função de Cadastrar
 - Integração com Firebase
-- Integração com Facebook(Login)
 - Integração com Google(Login)
