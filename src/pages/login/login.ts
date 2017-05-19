@@ -18,24 +18,28 @@ export class PGLoginC implements OnInit {
   constructor(public navCtrl: NavController,
               public loginProvider: ProviderLoginC) {}
 
- 
+  ngOnInit(){
+    this._credencial = new CredencialC();
 
-   ionViewDidLoad() {
+    this.loginControleEstado();
+  }
+
+  loginControleEstado(){
+
     this.loginProvider.LoginSucessoEE.subscribe(
       user => {
         this.PerfilUsuario = user;
-         this.navCtrl.setRoot(PGTarefaLista);
-      }
-    );
+        this.navCtrl.setRoot(PGTarefaLista, {PerfilUsuario: user});
+      });
+
     this.loginProvider.LoginFalhaEE.subscribe(
       error => console.log(error)
     )
-  }
-  
-  ngOnInit(){
-    this._credencial = new CredencialC();
-  }
 
+    this.loginProvider.DeslogarEE.subscribe(
+      user => this.PerfilUsuario = null
+    )
+  }
   LoginCredencial(){
     this.loginProvider.LoginCredencial(this._credencial);
   }

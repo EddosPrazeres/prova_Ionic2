@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CredencialC } from "../../models/credencial";
 import { Facebook } from '@ionic-native/facebook';
+import { PGLoginC } from '../../pages/login/login'
 
 import firebase from "firebase";
 
@@ -24,7 +25,7 @@ export class ProviderLoginC
 		this.LoginFalhaEE = new EventEmitter();
 		this.DeslogarEE = new EventEmitter();
 		firebase.auth().onAuthStateChanged(usuario => {
-		this.callbackStateChange(usuario);
+			this.callbackStateChange(usuario);
 		})
 	}
 
@@ -58,10 +59,9 @@ export class ProviderLoginC
 				.catch(error => console.log(error));
 	}
 
-	Sair(){
+	Sair() {
 		firebase.auth().signOut()
 				.then(() => this.DeslogarEE.emit(true))
-				.catch(error => this.callbackFalhaLogin(error))
 	}	
 
 	private callbackStateChange(_usuario){
