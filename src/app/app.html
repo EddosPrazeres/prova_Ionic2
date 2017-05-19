@@ -1,6 +1,6 @@
-<ion-menu [content]="content">
+<ion-menu [content]="NOVO">
     <ion-header>
-
+        
         <ion-toolbar  color = "primary">
             <ion-title>Menu</ion-title>
         </ion-toolbar>
@@ -15,10 +15,11 @@
                     <ion-avatar item-left>
                         <img [src]="">
                     </ion-avatar>
-                    <h2>Nome Ex</h2>
+                    <h2>Nome</h2>
                     <button menuClose ion-button color="danger" (click)="Sair()">
-                        Deslogar
+                       Deslogar
                     </button>
+                    
 
                     
                 </ion-item>
@@ -26,11 +27,11 @@
         </ion-card>
 
         <ion-list>
-            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-                {{p.title}}
+            <button menuClose ion-item *ngFor="let pagina of MenuPaginas" (click)="AbrirPagina(pagina)">
+                {{pagina.Titulo}}
             </button>
         </ion-list>
 
     </ion-content>
 </ion-menu>
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #NOVO swipeBackEnabled="false"></ion-nav>

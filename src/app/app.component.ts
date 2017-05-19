@@ -7,6 +7,8 @@ import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
 import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
+import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
+
 import { ProviderLoginC} from '../providers/login/login'
 
 @Component({
@@ -19,7 +21,7 @@ export class MyApp implements OnInit{
   rootPage: any = PGLoginC;
   PerfilUsuario: any = null;
 
-  pages: Array<{title: string, component: any}>;
+  MenuPaginas: Array<{Titulo: string, PG: any}>;
 
   constructor(public platform: Platform, 
               public statusBar: StatusBar,
@@ -35,15 +37,14 @@ export class MyApp implements OnInit{
     });
 
   // used for an example of ngFor and navigation
-  this.pages = [
-    { title: 'Lista de Tarefas', component: PGTarefaLista },
-    // { title: 'Lista de Alertas', component: PGLoginC },
-    // { title: '"Notícias?" - Requisição da API', component: PGLoginC }
+  this.MenuPaginas = [
+    { Titulo: 'Lista de Tarefas', PG: PGTarefaLista },
+    { Titulo: 'ABC News', PG: PGrequisicaoAPI }
     ];
   }
 
-  openPage(page) {
-    this.nav.setRoot(page.component);
+  AbrirPagina(_pagina) {
+    this.nav.setRoot(_pagina.PG);
   }
 
   Sair() {
