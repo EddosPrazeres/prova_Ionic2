@@ -20,10 +20,6 @@ npm install
 
 - Tela de tarefas
 
-### Requisição à API de terceiros
-- Tela de Requisição
-- Exibição de dados
-
 #### Conteúdo Extra
 
 - Integração com Firebase
