@@ -22,6 +22,10 @@ npm install
 #### CRUD para as tarefas:
 
 - Tela de tarefas
+- Tela de Cadastro de Tarefas
+- Plugin do NativeStorage 
+- Cadastro de Tarefas
+- Exibição das Tarefas Cadastradas
 
 
 ### Requisição à API de terceiros 
