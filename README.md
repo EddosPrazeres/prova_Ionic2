@@ -35,6 +35,8 @@ npm install
 - Cadastro de alarmes
 - Exibição dos alarmes cadastrados
 - Opção de modificar e excluir alarmes
+- Plugin de Notificações
+- Envia uma notificação local para o celular na hora determinada.
 
 ### Requisição à API de terceiros 
 - Tela de requisição - ABC News
