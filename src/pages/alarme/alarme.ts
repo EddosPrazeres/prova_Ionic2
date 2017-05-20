@@ -14,31 +14,49 @@ import { PGtarefaCadastro} from '../alarme-cadastro/alarme-cadastro'
   templateUrl: 'alarme.html',
 })
 
-export class PGalarme {
+export class PGalarme{
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public providertarefa: ProviderTarefaProvider,
               private nativeStorage: NativeStorage) {
   }
-
-  ionViewDidLoad() {
-    let chaves;
-      this.nativeStorage.keys().then(
+  public chaves;
+  ionViewDidLoad(){
+    this.ChavesItens();
+  }
+  
+  ChavesItens(){
+    this.nativeStorage.keys().then(
       data => {
-        chaves = data;
-        this.ListaAlarme(chaves)
+        this.chaves = data;
+        this.FiltroItens(this.chaves)
       },
       error => console.error(error)
     );
   }
-  public Alarmes;
 
-  ListaAlarme(_alarme)
-  {
-    this.Alarmes = _alarme;  
+  public listaFiltrada: Array<any> = [];
+  FiltroItens(_alarmes) {
+    _alarmes.forEach(item => {
+      this.nativeStorage.getItem(item)
+        .then(
+        data => {
+          if (data.hora != null)  { 
+            this.listaFiltrada.push(data);
+            this.listaAlarmes(this.listaFiltrada);
+          }
+        },
+        error => console.error(error)
+      );
+    });
   }
 
-  cadastrarAlarme(){
+  public Alarmes;
+  listaAlarmes(v){
+    this.Alarmes = v;  
+  }
+
+  cadastrarTarefa(){
     this.navCtrl.push(PGtarefaCadastro);
   }
- }
+}
