@@ -12,7 +12,7 @@ import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
 import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
 import { PGalarme } from '../pages/alarme/alarme';
-import { PGtarefaCadastro } from '../pages/alarme-cadastro/alarme-cadastro';
+import { PGalarmeCadastro } from '../pages/alarme-cadastro/alarme-cadastro';
 
 import { HttpModule } from '@angular/http';
 
@@ -22,7 +22,7 @@ import { ProviderLoginC } from '../providers/login/login';
 import { ProviderTarefaProvider } from '../providers/provider-tarefa/provider-tarefa';
 
 import { NativeStorage } from '@ionic-native/native-storage';
-import { Facebook } from '@ionic-native/facebook'
+import { Facebook } from '@ionic-native/facebook';
 
 const firebaseCfg = {
     apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
@@ -42,7 +42,7 @@ const firebaseCfg = {
     PGTarefaCadastro,
     PGrequisicaoAPI,
     PGalarme,
-    PGtarefaCadastro
+    PGalarmeCadastro
   ],
   imports: [
     BrowserModule,
@@ -58,7 +58,7 @@ const firebaseCfg = {
     PGTarefaCadastro,
     PGrequisicaoAPI,
     PGalarme,
-    PGtarefaCadastro
+    PGalarmeCadastro
   ],
   providers: [
     StatusBar,

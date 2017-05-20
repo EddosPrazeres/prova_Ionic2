@@ -8,59 +8,31 @@
 
 <ion-content padding>
 
-  <ion-card>
-    <ion-card-header>
-      Alarme
-      <ion-fab right top *ngIf="titulo == 'Alteração de alarme'">
-        <button ion-fab mini color = "danger"  (click)="deletarAlarme()">
-          <ion-icon name="remove"></ion-icon>
-        </button>
-      </ion-fab>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label floating>
-                Nome
-              </ion-label>
-              <ion-input name="nome" required  [(ngModel)]="nome"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
+  <ion-fab right top *ngIf="titulo == 'Alteração de alarme'">
+    <button ion-fab mini color = "danger"  (click)="deletarAlarme()">
+      <ion-icon name="remove"></ion-icon>
+    </button>
+  </ion-fab>
 
-         <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label floating>
-                Descrição
-              </ion-label>
-              <ion-input name="descricao" required  [(ngModel)]="descricao"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
+  <form (ngSubmit)="Validacao()">
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="dados.nome" required name="nome"></ion-input>
+      </ion-item>
 
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label floating>
-                Horário
-              </ion-label>
-              <ion-datetime displayFormat="HH:mm" name="hora" required  [(ngModel)]="hora"></ion-datetime>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        
-        <ion-row>
-          <ion-col>
-            <button ion-button clear full (click)="cadastrarAlarmes()">
-              Salvar alarme
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
+      <ion-item>
+        <ion-label floating>Descrição</ion-label>
+        <ion-textarea [(ngModel)]="dados.descricao" required name="descricao"></ion-textarea>
+      </ion-item>
 
+      <ion-item>
+        <ion-label floating>Horário</ion-label>
+        <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" name="hora" [(ngModel)]="dados.hora" required name="hora"></ion-datetime>
+      </ion-item>
+
+      <button ion-button type="submit" block>Salvar Tarefa</button>
+    </form>
 </ion-content>
+
+
+

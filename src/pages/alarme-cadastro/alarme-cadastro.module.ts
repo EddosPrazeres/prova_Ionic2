@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { PGtarefaCadastro } from './alarme-cadastro';
+import { PGalarmeCadastro } from './alarme-cadastro';
 
 @NgModule({
   declarations: [
-    PGtarefaCadastro,
+    PGalarmeCadastro,
   ],
   imports: [
-    IonicPageModule.forChild(PGtarefaCadastro),
+    IonicPageModule.forChild(PGalarmeCadastro),
   ],
   exports: [
-    PGtarefaCadastro
+    PGalarmeCadastro
   ]
 })
-export class PGtarefaCadastroeModule {}
+export class PGalarmeCadastroModule {}

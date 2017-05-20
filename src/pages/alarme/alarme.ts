@@ -5,7 +5,7 @@ import { ProviderTarefaProvider } from "../../providers/provider-tarefa/provider
 
 import { NativeStorage } from '@ionic-native/native-storage';
 
-import { PGtarefaCadastro} from '../alarme-cadastro/alarme-cadastro'
+import { PGalarmeCadastro } from '../alarme-cadastro/alarme-cadastro'
 
 
 @IonicPage()
@@ -57,10 +57,10 @@ export class PGalarme{
   }
 
   cadastrarAlarme(){
-    this.navCtrl.push(PGtarefaCadastro);
+    this.navCtrl.push(PGalarmeCadastro);
   }
 
   selecionarAlarme(_alarme){
-    this.navCtrl.push(PGtarefaCadastro, {alarmeSelecionado: _alarme});
+    this.navCtrl.push(PGalarmeCadastro, {alarmeSelecionado: _alarme});
   }
 }
