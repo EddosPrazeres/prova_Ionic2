@@ -58,4 +58,8 @@ export class PGTarefaLista {
   cadastrarTarefa(){
     this.navCtrl.push(PGTarefaCadastro);
   }
+
+  selecionarTarefa(_tarefa){
+    this.navCtrl.push(PGTarefaCadastro, {tarefaSelecionada: _tarefa});
+  }
 }

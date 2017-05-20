@@ -9,7 +9,7 @@
 
 <ion-content>
       <ion-list>
-            <button ion-item  *ngFor="let tarefa of Tarefas" >
+            <button ion-item  *ngFor="let tarefa of Tarefas" (click)="selecionarTarefa(tarefa)">
                 {{tarefa.nome}} - {{tarefa.descricao}}
             </button>
         </ion-list>

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Cadastrar Tarefa</ion-title>
+    <ion-title>{{titulo}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,8 +9,14 @@
 <ion-content padding>
 
   <ion-card>
+    
     <ion-card-header>
       Tarefa
+      <ion-fab right top *ngIf="titulo == 'Alteração de tarefa'">
+          <button ion-fab mini color = "danger"  (click)="deletarTarefa()">
+            <ion-icon name="remove">
+          </ion-icon></button>
+      </ion-fab>
     </ion-card-header>
     <ion-card-content>
       <ion-grid>

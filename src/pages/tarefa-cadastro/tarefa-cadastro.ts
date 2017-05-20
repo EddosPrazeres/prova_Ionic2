@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { PGTarefaLista } from '../tarefa-lista/tarefa-lista'
@@ -8,28 +8,43 @@ import { PGTarefaLista } from '../tarefa-lista/tarefa-lista'
   selector: 'page-tarefa-cadastro',
   templateUrl: 'tarefa-cadastro.html',
 })
-export class PGTarefaCadastro {
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              private nativeStorage: NativeStorage) {
+export class PGTarefaCadastro implements OnInit{
+  public tarefa: any;
+  public titulo: string;
+  public nome: string;
+  public descricao: string;
 
-    
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private nativeStorage: NativeStorage) { } 
 
   ionViewDidLoad() {
-   // this.nativeStorage.clear();
+      
   }
 
-  public TarefaNome;
-  public TarefaDescricao;
+  ngOnInit(){
+    this.tarefa = this.navParams.get("tarefaSelecionada");
+      if(this.tarefa != null){
+        this.nome =  this.tarefa.nome;
+        this.descricao = this.tarefa.descricao;
+        this.titulo = "Alteração de tarefa";
+      } else this.titulo = "Cadastro de Tarefa";
+  }
+
+
+  deletarTarefa(){
+    this.nativeStorage.remove(this.tarefa.nome);
+    this.navCtrl.setRoot(PGTarefaLista);
+  }
 
   cadastrarTarefas(){
-    console.log(this.TarefaNome);
-    console.log(this.TarefaDescricao);
-    this.nativeStorage.setItem(this.TarefaNome, {nome: this.TarefaNome, descricao: this.TarefaDescricao})
-    .then(
-      () => console.log('Stored item!'),
-      error => console.error('Error storing item', error)
+
+    if(this.tarefa != null) this.nativeStorage.remove(this.tarefa.nome);
+    
+    this.nativeStorage.setItem(this.nome, {nome: this.nome, descricao: this.descricao})
+    .then(() => console.log('Tarefa salva'),
+      error => console.error('Erro na terafa'+ error)
     );
     this.navCtrl.setRoot(PGTarefaLista);
   }
