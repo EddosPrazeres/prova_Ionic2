@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PGLoginC } from '../pages/login/login';
 import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
+import { PGalarme } from '../pages/alarme/alarme';
 
 import { ProviderLoginC} from '../providers/login/login'
 
@@ -36,8 +37,9 @@ export class MyApp implements OnInit{
 
   // used for an example of ngFor and navigation
   this.MenuPaginas = [
-    { Titulo: 'Lista de Tarefas', PG: PGTarefaLista },
-    { Titulo: 'ABC News', PG: PGrequisicaoAPI }
+    { Titulo: 'Lista de tarefas', PG: PGTarefaLista },
+    { Titulo: 'ABC News', PG: PGrequisicaoAPI },
+    { Titulo: 'Alarme', PG: PGalarme }
     ];
   }
 
