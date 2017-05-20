@@ -9,7 +9,7 @@
 
 <ion-content>
       <ion-list>
-            <button ion-item *ngFor="let Alarme of Alarmes" >
+            <button ion-item *ngFor="let Alarme of Alarmes" (click)="selecionarAlarme(Alarme)">
                {{Alarme.nome}} - {{Alarme.hora}}
             </button>
         </ion-list>

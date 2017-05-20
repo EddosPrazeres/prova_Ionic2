@@ -29,9 +29,8 @@ export class PGTarefaCadastro implements OnInit{
         this.nome =  this.tarefa.nome;
         this.descricao = this.tarefa.descricao;
         this.titulo = "Alteração de tarefa";
-      } else this.titulo = "Cadastro de Tarefa";
+      } else this.titulo = "Cadastro de tarefa";
   }
-
 
   deletarTarefa(){
     this.nativeStorage.remove(this.tarefa.nome);

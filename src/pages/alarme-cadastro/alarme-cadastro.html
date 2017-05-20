@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Cadastrar Alarme</ion-title>
+    <ion-title>{{titulo}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,6 +11,11 @@
   <ion-card>
     <ion-card-header>
       Alarme
+      <ion-fab right top *ngIf="titulo == 'Alteração de alarme'">
+        <button ion-fab mini color = "danger"  (click)="deletarAlarme()">
+          <ion-icon name="remove"></ion-icon>
+        </button>
+      </ion-fab>
     </ion-card-header>
     <ion-card-content>
       <ion-grid>
@@ -49,7 +54,7 @@
         
         <ion-row>
           <ion-col>
-            <button ion-button clear full (click)="cadastrarAlarme()">
+            <button ion-button clear full (click)="cadastrarAlarmes()">
               Salvar alarme
             </button>
           </ion-col>

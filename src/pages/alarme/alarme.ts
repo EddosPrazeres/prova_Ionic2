@@ -56,7 +56,11 @@ export class PGalarme{
     this.Alarmes = v;  
   }
 
-  cadastrarTarefa(){
+  cadastrarAlarme(){
     this.navCtrl.push(PGtarefaCadastro);
+  }
+
+  selecionarAlarme(_alarme){
+    this.navCtrl.push(PGtarefaCadastro, {alarmeSelecionado: _alarme});
   }
 }
