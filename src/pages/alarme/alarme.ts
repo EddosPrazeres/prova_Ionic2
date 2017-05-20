@@ -5,7 +5,9 @@ import { ProviderTarefaProvider } from "../../providers/provider-tarefa/provider
 
 import { NativeStorage } from '@ionic-native/native-storage';
 
-import { PGalarmeCadastro } from '../alarme-cadastro/alarme-cadastro'
+import { PGalarmeCadastro } from '../alarme-cadastro/alarme-cadastro';
+
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @IonicPage()
@@ -18,8 +20,45 @@ export class PGalarme{
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public providertarefa: ProviderTarefaProvider,
-              private nativeStorage: NativeStorage) {
+              private nativeStorage: NativeStorage,
+              private localNotifications: LocalNotifications) {
+
+                // Schedule a single notification
+
+
+      
   }
+
+
+Notificacao(d){
+  // Schedule delayed notification
+      this.localNotifications.schedule({
+        id: 1,
+        text: d.nome,
+        at: new Date(d.hora),
+        led: 'FF0000',
+        sound: null
+      });
+}
+
+Notificacao2(d){
+  // Schedule delayed notification
+      this.localNotifications.schedule({
+        id: 1,
+        text: d.nome,
+        at: new Date(d.hora),
+        led: 'FF0000',
+        sound: null,
+        icon: 'http://www.freeiconspng.com/uploads/courses-icon-10.png'
+      });
+}
+
+
+
+
+
+
+  
   public chaves;
   ionViewDidLoad(){
     this.ChavesItens();
@@ -44,6 +83,8 @@ export class PGalarme{
           if (data.hora != null)  { 
             this.listaFiltrada.push(data);
             this.listaAlarmes(this.listaFiltrada);
+            this.Notificacao2(data)
+            console.log(data.hora);
           }
         },
         error => console.error(error)
@@ -53,7 +94,7 @@ export class PGalarme{
 
   public Alarmes;
   listaAlarmes(v){
-    this.Alarmes = v;  
+    this.Alarmes = v;
   }
 
   cadastrarAlarme(){

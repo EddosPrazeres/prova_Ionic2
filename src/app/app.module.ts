@@ -23,6 +23,7 @@ import { ProviderTarefaProvider } from '../providers/provider-tarefa/provider-ta
 
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 const firebaseCfg = {
     apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
@@ -67,7 +68,8 @@ const firebaseCfg = {
     ProviderLoginC,
     ProviderTarefaProvider,
     Facebook,
-    NativeStorage
+    NativeStorage,
+    LocalNotifications
   ]
 })
 export class AppModule {

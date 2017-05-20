@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { PGalarme } from '../alarme/alarme'
-
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -12,7 +12,8 @@ import { PGalarme } from '../alarme/alarme'
 export class PGalarmeCadastro implements OnInit{
   public alarme: any;
   public titulo: string;
-  public dados = {nome:"", descricao:"", hora: new Date().toISOString() };
+  public dados = {nome:"", hora: moment(new Date()).format()};
+  
   
 
   constructor(
@@ -24,16 +25,8 @@ export class PGalarmeCadastro implements OnInit{
   ionViewDidLoad() { console.log(this.dados.hora ) }
  
   Validacao() {
-      if(this.dados.nome != "" && this.dados.descricao != "" && this.dados.hora) {
-      this.ExibirAlerta("Alarme cadastrada com Sucesso!", "Seu alarme foi cadastrado com sucesso.", true);
-    } 
-
-    if (this.dados.nome == "" && this.dados.descricao == ""){
-      this.ExibirAlerta("Alarme não cadastrado!", "Preencha o campo de nome e descrição.", false) 
-    } else {
-      if(this.dados.nome == "") this.ExibirAlerta("Alarme não cadastrado!", "Preencha o campo de nome.", false) ;
-      if(this.dados.descricao == "") this.ExibirAlerta("Alarme não cadastrado!", "Preencha o campo de descrição.", false);
-    }
+      if(this.dados.nome != "") this.ExibirAlerta("Alarme cadastrada com Sucesso!", "Seu alarme foi cadastrado com sucesso.", true);
+      else this.ExibirAlerta("Alarme não cadastrado!", "Preencha o campo de nome.", false)
   }
 
   ExibirAlerta(_titulo, _subtitulo, _status) {
@@ -77,7 +70,6 @@ export class PGalarmeCadastro implements OnInit{
     this.alarme = this.navParams.get("alarmeSelecionado");
       if(this.alarme != null){
         this.dados.nome =  this.alarme.nome;
-        this.dados.descricao = this.alarme.descricao;
         this.dados.hora = this.alarme.hora;
         this.titulo = "Alteração de alarme";
       } else this.titulo = "Cadastro de alarme";
@@ -93,7 +85,7 @@ export class PGalarmeCadastro implements OnInit{
   cadastrarAlarme(){
     if(this.alarme != null) this.nativeStorage.remove(this.alarme.nome);
     
-    this.nativeStorage.setItem(this.dados.nome, {nome: this.dados.nome, descricao: this.dados.descricao, hora: this.dados.hora})
+    this.nativeStorage.setItem(this.dados.nome, {nome: this.dados.nome, hora: this.dados.hora})
     .then(() => console.log('Alarme salvo'),
       error => console.error('Erro no alarme'+ error)
     );
