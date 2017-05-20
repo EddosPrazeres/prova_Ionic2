@@ -9,8 +9,8 @@
 
 <ion-content>
       <ion-list>
-            <button ion-item *ngFor="let tarefa of Tarefas" >
-                {{tarefa}}
+            <button ion-item  *ngFor="let tarefa of Tarefas" >
+                {{tarefa.nome}} - {{tarefa.descricao}}
             </button>
         </ion-list>
 </ion-content>

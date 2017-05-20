@@ -17,7 +17,7 @@ import { ProviderLoginC} from '../providers/login/login'
 export class MyApp implements OnInit{
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PGLoginC;
+  rootPage: any = PGTarefaLista;
   PerfilUsuario: any = null;
 
   MenuPaginas: Array<{Titulo: string, PG: any}>;
