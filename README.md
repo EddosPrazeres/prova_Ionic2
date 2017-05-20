@@ -15,21 +15,29 @@ npm install
 
 - Tela de Login
 - Integração com Facebook(Login)
-- Plugin do Facebook (Opção de ver Nome e Foto do usuário) 
+- Plugin do Facebook
 - Controle de Sessão 
 
 
 #### CRUD para as tarefas:
 
 - Tela de tarefas
-- Tela de Cadastro de Tarefas
+- Tela de cadastro de tarefas
 - Plugin do NativeStorage 
-- Cadastro de Tarefas
-- Exibição das Tarefas Cadastradas
+- Cadastro de tarefas
+- Exibição das tarefas cadastrados
+- Opção de modificar e excluir tarefas
 
+### Alerta com notificação
+
+- Tela de alarmes
+- Tela de cadastro de alarmes
+- Cadastro de alarmes
+- Exibição dos alarmes cadastrados
+- Opção de modificar e excluir alarmes
 
 ### Requisição à API de terceiros 
-- Tela de Requisição 
+- Tela de requisição - ABC News
 - Exibição de dados 
 
 
