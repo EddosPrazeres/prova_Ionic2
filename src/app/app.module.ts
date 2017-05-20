@@ -12,6 +12,7 @@ import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
 import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
 import { PGalarme } from '../pages/alarme/alarme';
+import { PGtarefaCadastro } from '../pages/alarme-cadastro/alarme-cadastro';
 
 import { HttpModule } from '@angular/http';
 
@@ -40,7 +41,8 @@ const firebaseCfg = {
     PGTarefaLista,
     PGTarefaCadastro,
     PGrequisicaoAPI,
-    PGalarme
+    PGalarme,
+    PGtarefaCadastro
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ const firebaseCfg = {
     PGTarefaLista,
     PGTarefaCadastro,
     PGrequisicaoAPI,
-    PGalarme
+    PGalarme,
+    PGtarefaCadastro
   ],
   providers: [
     StatusBar,

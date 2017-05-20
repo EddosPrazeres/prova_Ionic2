@@ -5,6 +5,8 @@ import { ProviderTarefaProvider } from "../../providers/provider-tarefa/provider
 
 import { NativeStorage } from '@ionic-native/native-storage';
 
+import { PGtarefaCadastro} from '../alarme-cadastro/alarme-cadastro'
+
 
 @IonicPage()
 @Component({
@@ -18,5 +20,9 @@ export class PGalarme {
               public providertarefa: ProviderTarefaProvider,
               private nativeStorage: NativeStorage) 
               {
+  }
+
+  cadastrarAlarme(){
+    this.navCtrl.push(PGtarefaCadastro);
   }
  }
