@@ -1,5 +1,5 @@
-import { Component, OnInit  } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component  } from '@angular/core';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { ProviderLoginC } from "../../providers/login/login";
 import { CredencialC } from "../../models/credencial";
@@ -12,11 +12,9 @@ import { CredencialC } from "../../models/credencial";
 export class PGCadastroC {
   credencial: CredencialC;
   constructor(public navCtrl: NavController,
-  			      public loginProvider: ProviderLoginC) {}
+  			      public loginProvider: ProviderLoginC) {
+        this.credencial = new CredencialC();}
 
-   ngOnInit(){
-    this.credencial = new CredencialC();
-   }
 
   Cadastrar(){
   	this.loginProvider.cadastrarUsuario(this.credencial);

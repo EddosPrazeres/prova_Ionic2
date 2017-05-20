@@ -10,7 +10,6 @@ import { PGLoginC } from '../pages/login/login';
 import { PGCadastroC } from '../pages/cadastro/cadastro';
 import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
-import { TestandoPage } from '../pages/testando/testando';
 import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
 
 import { HttpModule } from '@angular/http';
@@ -20,7 +19,7 @@ import firebase from 'firebase';
 import { ProviderLoginC } from '../providers/login/login';
 import { ProviderTarefaProvider } from '../providers/provider-tarefa/provider-tarefa';
 
-
+import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook'
 
 const firebaseCfg = {
@@ -61,7 +60,8 @@ const firebaseCfg = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProviderLoginC,
     ProviderTarefaProvider,
-    Facebook
+    Facebook,
+    NativeStorage
   ]
 })
 export class AppModule {

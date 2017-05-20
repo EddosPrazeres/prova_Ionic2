@@ -1,47 +1,50 @@
 <ion-header>
-  <ion-navbar color='primary'>
-    <ion-title>Cadastro de Tarefa</ion-title>
+
+  <ion-navbar color="primary">
+    <ion-title>Cadastrar Tarefa</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
+
   <ion-card>
-    <ion-card-content>      
-      <form>
-        <ion-grid>
+    <ion-card-header>
+      Tarefa
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>
+                Nome
+              </ion-label>
+              <ion-input name="TarefaNome" required  [(ngModel)]="TarefaNome"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label floating>
-                  Nome
-                </ion-label>
-                <ion-input ></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
+         <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>
+                Descricao
+              </ion-label>
+              <ion-input name="TarefaDescricao" required  [(ngModel)]="TarefaDescricao"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label floating>
-                  Descrição
-                </ion-label>
-                <ion-input></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-
-          <ion-row>
-            <ion-col>
-              <button ion-button full clear>
-                Salvar tarefa
-              </button>
-            </ion-col>
-          </ion-row>
-
-        </ion-grid>
-      </form>
+        <ion-row>
+          <ion-col>
+            <button ion-button clear full (click)="cadastrarTarefas()">
+              Salvar Tarefa
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
+
 </ion-content>

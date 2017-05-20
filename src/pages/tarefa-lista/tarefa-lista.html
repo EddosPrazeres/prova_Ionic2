@@ -8,13 +8,11 @@
 </ion-header>
 
 <ion-content>
-      <button ion-item>
-        Teste - Tarefa 1
-      </button>
-
-      <button ion-item>
-        Teste - Tarefa 1
-      </button>
+      <ion-list>
+            <button ion-item *ngFor="let tarefa of Tarefas" >
+                {{tarefa}}
+            </button>
+        </ion-list>
 </ion-content>
 <ion-fab bottom right>
     <button ion-fab color='primary' (click)="cadastrarTarefa()">

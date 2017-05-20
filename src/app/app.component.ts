@@ -4,9 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { PGLoginC } from '../pages/login/login';
-import { PGCadastroC } from '../pages/cadastro/cadastro';
 import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
-import { PGTarefaCadastro } from '../pages/tarefa-cadastro/tarefa-cadastro';
 import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
 
 import { ProviderLoginC} from '../providers/login/login'

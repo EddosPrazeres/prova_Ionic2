@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CredencialC } from "../../models/credencial";
 import { Facebook } from '@ionic-native/facebook';
-import { PGLoginC } from '../../pages/login/login'
 
 import firebase from "firebase";
 
