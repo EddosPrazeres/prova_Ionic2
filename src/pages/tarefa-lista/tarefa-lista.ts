@@ -19,40 +19,22 @@ export class PGTarefaLista {
               public providertarefa: ProviderTarefaProvider,
               private nativeStorage: NativeStorage) {
   }
-  public chaves;
-  ionViewDidLoad(){
-    this.ChavesItens();
-  }
-  
-  ChavesItens(){
-    this.nativeStorage.keys().then(
+
+  ionViewDidLoad() {
+    let chaves;
+      this.nativeStorage.keys().then(
       data => {
-        this.chaves = data;
-        this.FiltroItens(this.chaves)
+        chaves = data;
+        this.ListaTarefas(chaves)
       },
       error => console.error(error)
     );
   }
-
-  public listaFiltrada: Array<any> = [];
-  FiltroItens(_tarefas) {
-    _tarefas.forEach(item => {
-      this.nativeStorage.getItem(item)
-        .then(
-        data => {
-          if (data.hora == null)  { 
-            this.listaFiltrada.push(data);
-            this.listaTarefas(this.listaFiltrada);
-          }
-        },
-        error => console.error(error)
-      );
-    });
-  }
-
   public Tarefas;
-  listaTarefas(v){
-    this.Tarefas = v;  
+
+  ListaTarefas(_tarefas)
+  {
+    this.Tarefas = _tarefas;  
   }
 
   cadastrarTarefa(){

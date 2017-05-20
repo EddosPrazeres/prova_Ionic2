@@ -18,24 +18,8 @@ export class PGalarme {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public providertarefa: ProviderTarefaProvider,
-              private nativeStorage: NativeStorage) {
-  }
-
-  ionViewDidLoad() {
-    let chaves;
-      this.nativeStorage.keys().then(
-      data => {
-        chaves = data;
-        this.ListaAlarme(chaves)
-      },
-      error => console.error(error)
-    );
-  }
-  public Alarmes;
-
-  ListaAlarme(_alarme)
-  {
-    this.Alarmes = _alarme;  
+              private nativeStorage: NativeStorage) 
+              {
   }
 
   cadastrarAlarme(){
