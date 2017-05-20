@@ -9,8 +9,8 @@
 
 <ion-content>
       <ion-list>
-            <button ion-item>
-               
+            <button ion-item *ngFor="let Alarme of Alarmes" >
+               {{Alarme}}
             </button>
         </ion-list>
 </ion-content>
