@@ -24,7 +24,7 @@ export class PGTarefaCadastro implements OnInit{
  
   Validacao() {
       if(this.dados.nome != "" && this.dados.descricao != "") {
-      this.ExibirAlerta("Tarefa cadastrada com Sucesso!", "Sua tarefa foi cadastrada com sucesso.", true);
+      this.ExibirAlerta("Parabéns!", "Sua tarefa foi cadastrada com sucesso.", true);
     } 
 
     if (this.dados.nome == "" && this.dados.descricao == ""){

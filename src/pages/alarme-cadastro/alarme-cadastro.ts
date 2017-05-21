@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { NativeStorage } from '@ionic-native/native-storage';
 import { PGalarme } from '../alarme/alarme'
 import * as moment from 'moment';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
 @IonicPage()
 @Component({
   selector: 'page-alarme-cadastro',
@@ -20,13 +20,19 @@ export class PGalarmeCadastro implements OnInit{
     public navCtrl: NavController, 
     public navParams: NavParams,
     private nativeStorage: NativeStorage,
-    public alertaCtrl: AlertController) { } 
+    public alertaCtrl: AlertController,
+    private localNotifications: LocalNotifications) { } 
 
   ionViewDidLoad() { console.log(this.dados.hora ) }
  
   Validacao() {
-      if(this.dados.nome != "") this.ExibirAlerta("Alarme cadastrada com Sucesso!", "Seu alarme foi cadastrado com sucesso.", true);
+      if(this.dados.nome != "") {
+        if (moment(new Date()).format() > this.dados.hora)  this.ExibirAlerta("Alarme não cadastrado!", "Este horário já foi atingido.", false)
+        else this.ExibirAlerta("Parabéns!", "Seu alarme foi cadastrado com sucesso.", true);
+      }
       else this.ExibirAlerta("Alarme não cadastrado!", "Preencha o campo de nome.", false)
+
+      console.log( );
   }
 
   ExibirAlerta(_titulo, _subtitulo, _status) {
@@ -80,12 +86,13 @@ export class PGalarmeCadastro implements OnInit{
   deletarAlarme(){
     this.nativeStorage.remove(this.alarme.nome);
     this.navCtrl.setRoot(PGalarme);
+    this.localNotifications.cancelAll();
   }
 
   cadastrarAlarme(){
     if(this.alarme != null) this.nativeStorage.remove(this.alarme.nome);
-    
-    this.nativeStorage.setItem(this.dados.nome, {nome: this.dados.nome, hora: this.dados.hora})
+  
+    this.nativeStorage.setItem(this.dados.nome, {nome: this.dados.nome, hora: this.dados.hora, id: 0})
     .then(() => console.log('Alarme salvo'),
       error => console.error('Erro no alarme'+ error)
     );

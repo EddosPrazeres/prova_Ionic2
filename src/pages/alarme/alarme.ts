@@ -9,6 +9,7 @@ import { PGalarmeCadastro } from '../alarme-cadastro/alarme-cadastro';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -25,39 +26,20 @@ export class PGalarme{
 
                 // Schedule a single notification
 
-
+                
       
   }
 
 
-Notificacao(d){
-  // Schedule delayed notification
-      this.localNotifications.schedule({
-        id: 1,
-        text: d.nome,
-        at: new Date(d.hora),
-        led: 'FF0000',
-        sound: null
-      });
-}
-
-Notificacao2(d){
-  // Schedule delayed notification
-      this.localNotifications.schedule({
-        id: 1,
-        text: d.nome,
-        at: new Date(d.hora),
-        led: 'FF0000',
-        sound: null,
-        icon: 'http://www.freeiconspng.com/uploads/courses-icon-10.png'
-      });
-}
-
-
-
-
-
-
+  Notificacao(d){
+    this.localNotifications.schedule({
+      id: d.id,
+      text: d.nome,
+      at: new Date(d.hora),
+      led: 'FF0000',
+      sound: null
+    });
+  }
   
   public chaves;
  
@@ -78,16 +60,22 @@ Notificacao2(d){
   }
 
   public listaFiltrada: Array<any> = [];
+  Count = 0; 
   FiltroItens(_alarmes) {
     _alarmes.forEach(item => {
       this.nativeStorage.getItem(item)
         .then(
         data => {
-          if (data.hora != null)  { 
+          if (data.hora != null && moment(new Date()).format() < data.hora)  { 
+            this.Count = this.Count +1;
+            data.id = this.Count;
             this.listaFiltrada.push(data);
             this.listaAlarmes(this.listaFiltrada);
-            this.Notificacao2(data)
-            console.log(data.hora);
+            this.Notificacao(data)
+            console.log(data.hora + " "+data.id);
+          } else if (data.hora != null && moment(new Date()).format() > data.hora)
+          {
+            this.nativeStorage.remove(item);
           }
         },
         error => console.error(error)
@@ -98,6 +86,8 @@ Notificacao2(d){
   public Alarmes;
   listaAlarmes(v){
     this.Alarmes = v;
+    
+      
   }
 
   cadastrarAlarme(){
