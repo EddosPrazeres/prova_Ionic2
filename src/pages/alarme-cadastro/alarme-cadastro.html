@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color='dark'>
     <ion-title>{{titulo}}</ion-title>
   </ion-navbar>
 
@@ -22,10 +22,10 @@
 
       <ion-item>
         <ion-label floating>Horário</ion-label>
-        <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm:ss" name="hora" [(ngModel)]="dados.hora" required name="hora"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" name="hora" [(ngModel)]="dados.hora" required name="hora"></ion-datetime>
       </ion-item>
 
-      <button ion-button type="submit" block>Salvar alarme</button>
+      <button ion-button type="submit" block color="dark">Salvar alarme</button>
     </form>
 </ion-content>
 

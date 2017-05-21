@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color='dark'>
     <ion-title>{{titulo}}</ion-title>
   </ion-navbar>
 
@@ -20,10 +20,10 @@
         <ion-input type="text" [(ngModel)]="dados.nome" required name="nome"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Descrição</ion-label>
-        <ion-textarea [(ngModel)]="dados.descricao" required name="descricao"></ion-textarea>
+        <ion-label floating >Descrição</ion-label>
+        <ion-textarea [(ngModel)]="dados.descricao" required name="descricao" ></ion-textarea>
       </ion-item>
-      <button ion-button type="submit" block>Salvar Tarefa</button>
+      <button ion-button type="submit" block color='dark'>Salvar Tarefa</button>
     </form>
 </ion-content>
 
