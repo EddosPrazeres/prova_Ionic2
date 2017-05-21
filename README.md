@@ -41,9 +41,3 @@ npm install
 ### Requisição à API de terceiros 
 - Tela de requisição - ABC News
 - Exibição de dados 
-
-
-#### Conteúdo Extra
-
-- Integração com Firebase
-- Integração com Google(Login)
