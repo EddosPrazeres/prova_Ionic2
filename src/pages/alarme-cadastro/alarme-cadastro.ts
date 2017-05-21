@@ -44,27 +44,27 @@ export class PGalarmeCadastro implements OnInit{
   }
 
   ExibirConfirmacao() {
-  let alerta = this.alertaCtrl.create({
-    title: 'Deletar alarme!',
-    message: 'Deseja deletar este alarme?',
-    buttons: [
-      {
-        text: 'Não!',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel Não');
+    let alerta = this.alertaCtrl.create({
+      title: 'Deletar alarme!',
+      message: 'Deseja deletar este alarme?',
+      buttons: [
+        {
+          text: 'Não!',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel Não');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            this.deletarAlarme();
+          }
         }
-      },
-      {
-        text: 'Sim',
-        handler: () => {
-          this.deletarAlarme();
-        }
-      }
-    ]
-  });
-  alerta.present();
-}
+      ]
+    });
+    alerta.present();
+  }
   
   ngOnInit(){
     this.alarme = this.navParams.get("alarmeSelecionado");

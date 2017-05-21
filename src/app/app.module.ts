@@ -24,15 +24,6 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
-/*const firebaseCfg = {
-    apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
-			authDomain: "listatarefasionic2.firebaseapp.com",
-			databaseURL: "https://listatarefasionic2.firebaseio.com",
-			projectId: "listatarefasionic2",
-			storageBucket: "listatarefasionic2.appspot.com",
-			messagingSenderId: "424572934421"
-  };
-*/
 @NgModule({
   declarations: [
     MyApp,
@@ -69,8 +60,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     LocalNotifications
   ]
 })
+
 export class AppModule {
   constructor(){
-    //firebase.initializeApp(firebaseCfg);
+    
   }
 }

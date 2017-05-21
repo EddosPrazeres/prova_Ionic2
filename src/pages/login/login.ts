@@ -6,6 +6,7 @@ import { CredencialC } from "../../models/credencial";
 import { Facebook } from '@ionic-native/facebook';
 
 import firebase from "firebase";
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @Component({
   selector: 'page-login',
@@ -14,54 +15,31 @@ import firebase from "firebase";
 export class PGLoginC implements OnInit {
   private _credencial: CredencialC;
   PerfilUsuario: any = null;
+  UsuarioAtual:any;
 
-  constructor(public navCtrl: NavController,
-              public loginProvider: ProviderLoginC,
-              private facebook: Facebook) {
-
-                  firebase.initializeApp({
-                    apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
-                    authDomain: "listatarefasionic2.firebaseapp.com",
-                    databaseURL: "https://listatarefasionic2.firebaseio.com",
-                    projectId: "listatarefasionic2",
-                    storageBucket: "listatarefasionic2.appspot.com",
-                    messagingSenderId: "424572934421"
-                  });
-
-              }
+  constructor(
+    public navCtrl: NavController,
+    public loginProvider: ProviderLoginC,
+    private facebook: Facebook,
+    private nativeStorage: NativeStorage) { }
 
   ngOnInit(){
     //this.loginControleEstado();
   }
 
-    deslogar(){
-     //this.loginProvider.logout();
+    LoginFacebook(){
+     this.loginProvider.LoginFacebook();
   }
-  
 
-
-	UsuarioAtual:any;
-
-	LoginFacebook(): void {
-		this.facebook.login(['email']).then( (response) => {
-		const facebookCredential = firebase.auth.FacebookAuthProvider
-			.credential(response.authResponse.accessToken);
-
-		firebase.auth().signInWithCredential(facebookCredential)
-			.then((success) => {
-			console.log("Firebase success: " + JSON.stringify(success));
-			this.UsuarioAtual = success;
-      this.navCtrl.setRoot(PGTarefaLista,{Perfil: success})
-			})
-			.catch((error) => {
-			console.log("Firebase failure: " + JSON.stringify(error));
-		});
-
-		}).catch((error) => { console.log(error) });
-
-		console.log(this.UsuarioAtual);
-	}
-
-
-
+  ionViewDidLoad() {
+    this.loginProvider.loginSucessoEventEmitter.subscribe(
+      user => {
+        this.navCtrl.setRoot(PGTarefaLista);
+          this.nativeStorage.setItem("Perfil", {nome: user.displayName, foto: user.photoURL})
+              .then(() => console.log('Perfil salvo'),
+                error => console.error('Erro no perfil'+ error)
+              );
+      }
+    );
+  }
 }

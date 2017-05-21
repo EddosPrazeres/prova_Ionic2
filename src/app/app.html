@@ -16,13 +16,16 @@
                         <img [src]="dados.foto">
                     </ion-avatar>
                     <h2>{{dados.nome}}</h2>
-                    <button ion-button color="light" (click)="Recarregar()">
-                       Recarregar
+                    <button ion-button menuClose color="danger" (click)="Deslogar()">
+                        Deslogar
                     </button>
+                </ion-item>
+
+                <button ion-button full *ngIf= "dados.nome == 'Sem nome'" color="light" (click)="Recarregar()">
+                    Mostrar dados
+                </button>
                     
 
-                    
-                </ion-item>
             </ion-card-content>
         </ion-card>
 

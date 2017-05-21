@@ -19,14 +19,6 @@ export class PGTarefaLista {
     public navParams: NavParams,
     public providertarefa: ProviderTarefaProvider,
     private nativeStorage: NativeStorage) {
-
-      this.item = this.navParams.get("Perfil");
-      if (this.item != null){
-        this.nativeStorage.setItem("Perfil", {nome: this.item.displayName, foto: this.item.photoURL})
-        .then(() => console.log('Perfil salvo'),
-        error => console.error('Erro no perfil'+ error)
-        );
-      }
   }
   public chaves;
    public item;
