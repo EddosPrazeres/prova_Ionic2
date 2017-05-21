@@ -17,6 +17,7 @@ npm install
 - Integração com Facebook(Login)
 - Plugin do Facebook
 - Controle de Sessão 
+- Mostrar dados do usuário (Nome e foto)
 
 
 #### CRUD para as tarefas:
