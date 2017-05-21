@@ -8,7 +8,9 @@ import { PGTarefaLista } from '../pages/tarefa-lista/tarefa-lista';
 import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
 import { PGalarme } from '../pages/alarme/alarme';
 
-import { ProviderLoginC} from '../providers/login/login'
+import { ProviderLoginC} from '../providers/login/login';
+
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,7 +19,7 @@ import { ProviderLoginC} from '../providers/login/login'
 export class MyApp implements OnInit{
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PGTarefaLista;
+  rootPage: any = PGLoginC;
   PerfilUsuario: any = null;
 
   MenuPaginas: Array<{Titulo: string, PG: any}>;
@@ -25,7 +27,8 @@ export class MyApp implements OnInit{
   constructor(public platform: Platform, 
               public statusBar: StatusBar,
               public splashScreen: SplashScreen, 
-              public loginProvider: ProviderLoginC) { }
+              public loginProvider: ProviderLoginC,
+              private nativeStorage: NativeStorage) { }
 
   ngOnInit(){
     this.platform.ready().then(() => {
@@ -33,6 +36,7 @@ export class MyApp implements OnInit{
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      console.log(this.loginProvider.UsuarioAtual);
     });
 
   // used for an example of ngFor and navigation
@@ -47,8 +51,23 @@ export class MyApp implements OnInit{
     this.nav.setRoot(_pagina.PG);
   }
 
-  Sair() {
-    this.loginProvider.Sair();
-    this.nav.setRoot(PGLoginC);
+  Recarregar() {
+    this.gets();
   }
+  dados = {nome: "", foto: ""}
+  gets()
+  {
+    this.nativeStorage.getItem("Perfil")
+        .then(
+        data => {
+          this.dados.nome = data.nome;
+          this.dados.foto = data.foto;
+        },
+        error => console.error(error)
+      );
+
+      console.log(this.dados.foto);
+  }
+
+
 }

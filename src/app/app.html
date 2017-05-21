@@ -13,11 +13,11 @@
             <ion-card-content>
                 <ion-item>
                     <ion-avatar item-left>
-                        <img [src]="">
+                        <img [src]="dados.foto">
                     </ion-avatar>
-                    <h2>Nome</h2>
-                    <button menuClose ion-button color="danger" (click)="Sair()">
-                       Deslogar
+                    <h2>{{dados.nome}}</h2>
+                    <button ion-button color="light" (click)="Recarregar()">
+                       Recarregar
                     </button>
                     
 

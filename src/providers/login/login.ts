@@ -11,75 +11,38 @@ export class ProviderLoginC
 {
 
 	UsuarioAtual:any;
-	Autenticado:boolean;
-	LoginSucessoEE:EventEmitter<any>;
-	LoginFalhaEE:EventEmitter<any>;
-	DeslogarEE:EventEmitter<any>;
-
-	constructor(public http: Http, 
-				public ngZone: NgZone, 
-				private facebook: Facebook) {
-					
-		this.LoginSucessoEE = new EventEmitter();
-		this.LoginFalhaEE = new EventEmitter();
-		this.DeslogarEE = new EventEmitter();
-		firebase.auth().onAuthStateChanged(usuario => {
-			this.callbackStateChange(usuario);
-		})
+	constructor(
+		public http: Http, 
+		public ngZone: NgZone, 
+		private facebook: Facebook) {
+/*
+		firebase.initializeApp({
+			apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
+			authDomain: "listatarefasionic2.firebaseapp.com",
+			databaseURL: "https://listatarefasionic2.firebaseio.com",
+			projectId: "listatarefasionic2",
+			storageBucket: "listatarefasionic2.appspot.com",
+			messagingSenderId: "424572934421"
+		});*/
 	}
 
-	LoginFacebook(){
-		let provider = new firebase.auth.FacebookAuthProvider();
+	facebookLogin(): void {/*
+		this.facebook.login(['email']).then( (response) => {
+		const facebookCredential = firebase.auth.FacebookAuthProvider
+			.credential(response.authResponse.accessToken);
 
-		return firebase.auth().signInWithPopup(provider)
-						.then(resultado => this.callbackSucessoLogin(resultado))
-						.catch(error => this.callbackFalhaLogin(error))
+		firebase.auth().signInWithCredential(facebookCredential)
+			.then((success) => {
+			console.log("Firebase success: " + JSON.stringify(success));
+			this.UsuarioAtual = success;
+			})
+			.catch((error) => {
+			console.log("Firebase failure: " + JSON.stringify(error));
+		});
+
+		}).catch((error) => { console.log(error) });
+
+		console.log(this.UsuarioAtual);*/
 	}
 
-	LoginCredencial(credencial:CredencialC){
-		firebase.auth().signInWithEmailAndPassword(credencial.email,credencial.senha)
-				.then(resultado => this.callbackSucessoLogin(resultado))
-				.catch(error => this.callbackFalhaLogin(error))
-	}
-
-	LoginGoogle(){
-		let provider = new firebase.auth.GoogleAuthProvider();
-		firebase.auth().signInWithPopup(provider)
-				.then(resultado => this.callbackSucessoLogin(resultado))
-				.catch(error => this.callbackFalhaLogin(error))
-	}
-
-	cadastrarUsuario(_credencial: CredencialC){
-		firebase.auth().createUserWithEmailAndPassword(_credencial.email,_credencial.senha)
-				.then(result => {
-					console.log(result);
-					firebase.database().ref('users/').child(result.uid).set(result.email)
-				})
-				.catch(error => console.log(error));
-	}
-
-	Sair() {
-		firebase.auth().signOut()
-				.then(() => this.DeslogarEE.emit(true))
-	}	
-
-	private callbackStateChange(_usuario){
-		this.ngZone.run( () => {
-			if(_usuario == null){
-				this.UsuarioAtual = null;
-				this.Autenticado = false;
-			} else {
-				this.UsuarioAtual = _usuario;
-				this.Autenticado = true;
-			}
-		})
-	}
-
-	private callbackSucessoLogin(_response){
-		this.LoginSucessoEE.emit(_response.user);
-	}
-
-	private callbackFalhaLogin(_error){
-		this.LoginFalhaEE.emit({code : _error.code, message : _error.message, email: _error.email, credencial: _error.credencial});
-	}
 }

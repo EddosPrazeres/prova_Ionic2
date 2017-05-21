@@ -14,14 +14,26 @@ import { NativeStorage } from '@ionic-native/native-storage';
   templateUrl: 'tarefa-lista.html',
 })
 export class PGTarefaLista {
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              public providertarefa: ProviderTarefaProvider,
-              private nativeStorage: NativeStorage) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public providertarefa: ProviderTarefaProvider,
+    private nativeStorage: NativeStorage) {
+
+      this.item = this.navParams.get("Perfil");
+      if (this.item != null){
+        this.nativeStorage.setItem("Perfil", {nome: this.item.displayName, foto: this.item.photoURL})
+        .then(() => console.log('Perfil salvo'),
+        error => console.error('Erro no perfil'+ error)
+        );
+      }
   }
   public chaves;
+   public item;
   ionViewDidLoad(){
     this.ChavesItens();
+
+     
   }
   
   ChavesItens(){
@@ -40,7 +52,7 @@ export class PGTarefaLista {
       this.nativeStorage.getItem(item)
         .then(
         data => {
-          if (data.hora == null)  { 
+          if (data.hora == null && data.foto == null)  { 
             this.listaFiltrada.push(data);
             this.listaTarefas(this.listaFiltrada);
           }

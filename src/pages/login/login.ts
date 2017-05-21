@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { PGCadastroC } from "../cadastro/cadastro";
 import { PGTarefaLista } from "../tarefa-lista/tarefa-lista";
 import { ProviderLoginC } from "../../providers/login/login";
 import { CredencialC } from "../../models/credencial";
+import { Facebook } from '@ionic-native/facebook';
 
-
+import firebase from "firebase";
 
 @Component({
   selector: 'page-login',
@@ -16,46 +16,52 @@ export class PGLoginC implements OnInit {
   PerfilUsuario: any = null;
 
   constructor(public navCtrl: NavController,
-              public loginProvider: ProviderLoginC) {}
+              public loginProvider: ProviderLoginC,
+              private facebook: Facebook) {
+
+                  firebase.initializeApp({
+                    apiKey: "AIzaSyCUl6NyrCF3_Uz38eEqt1mZh67MUJBBWlw",
+                    authDomain: "listatarefasionic2.firebaseapp.com",
+                    databaseURL: "https://listatarefasionic2.firebaseio.com",
+                    projectId: "listatarefasionic2",
+                    storageBucket: "listatarefasionic2.appspot.com",
+                    messagingSenderId: "424572934421"
+                  });
+
+              }
 
   ngOnInit(){
-    this._credencial = new CredencialC();
-
-    this.loginControleEstado();
+    //this.loginControleEstado();
   }
 
-  loginControleEstado(){
-
-    this.loginProvider.LoginSucessoEE.subscribe(
-      user => {
-        this.PerfilUsuario = user;
-        this.navCtrl.setRoot(PGTarefaLista, {PerfilUsuario: user});
-      });
-
-    this.loginProvider.LoginFalhaEE.subscribe(
-      error => console.log(error)
-    )
-
-    this.loginProvider.DeslogarEE.subscribe(
-      user => this.PerfilUsuario = null
-    )
+    deslogar(){
+     //this.loginProvider.logout();
   }
-  LoginCredencial(){
-    this.loginProvider.LoginCredencial(this._credencial);
-  }
+  
 
-  LoginGoogle(){
-    this.loginProvider.LoginGoogle();
-  }
 
-  LoginFacebook(){
-    this.loginProvider.LoginFacebook();
-  }
+	UsuarioAtual:any;
 
-  Sair() {
-    this.loginProvider.Sair();
-  }
-  Cadastrar(){
- 		this.navCtrl.push(PGCadastroC);
-  }
+	LoginFacebook(): void {
+		this.facebook.login(['email']).then( (response) => {
+		const facebookCredential = firebase.auth.FacebookAuthProvider
+			.credential(response.authResponse.accessToken);
+
+		firebase.auth().signInWithCredential(facebookCredential)
+			.then((success) => {
+			console.log("Firebase success: " + JSON.stringify(success));
+			this.UsuarioAtual = success;
+      this.navCtrl.setRoot(PGTarefaLista,{Perfil: success})
+			})
+			.catch((error) => {
+			console.log("Firebase failure: " + JSON.stringify(error));
+		});
+
+		}).catch((error) => { console.log(error) });
+
+		console.log(this.UsuarioAtual);
+	}
+
+
+
 }

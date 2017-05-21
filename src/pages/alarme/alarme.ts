@@ -60,8 +60,11 @@ Notificacao2(d){
 
   
   public chaves;
+ 
   ionViewDidLoad(){
     this.ChavesItens();
+
+   
   }
   
   ChavesItens(){
