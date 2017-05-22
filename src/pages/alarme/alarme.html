@@ -8,17 +8,24 @@
 </ion-header>
 
 <ion-content>
-      <ion-list>
-            <button ion-item *ngFor="let Alarme of Alarmes" (click)="selecionarAlarme(Alarme)">
-
-              
-                <ion-icon name="alarm" item-left  large></ion-icon>
-                <h1> {{Alarme.hora | date: 'H:mm - d/MM/yyyy'}}</h1>
-                <p>{{Alarme.nome}}</p>
-             
-
-            </button>
-        </ion-list>
+    <ion-list>
+    <button ion-item *ngFor="let Alarme of Alarmes" (click)="selecionarAlarme(Alarme)">
+        <ion-item-divider color = 'light'>
+            <ion-icon name="alarm" item-left  large></ion-icon>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <h1> {{Alarme.hora | date: 'H:mm '}}</h1>
+                    </ion-col>
+                    <ion-col>
+                        <h1> {{Alarme.hora | date: 'd/MM/yyyy'}}</h1>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <p>{{Alarme.nome}}</p>
+        </ion-item-divider>
+    </button>
+    </ion-list>
 </ion-content>
 <ion-fab bottom right>
     <button ion-fab color='dark'  (click)="cadastrarAlarme()">

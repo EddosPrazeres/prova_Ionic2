@@ -10,7 +10,11 @@
 <ion-content>
       <ion-list>
             <button ion-item  *ngFor="let tarefa of Tarefas" (click)="selecionarTarefa(tarefa)">
-                {{tarefa.nome}} - {{tarefa.descricao}}
+                <ion-item-divider full color = 'light'>
+                    <ion-icon name="document" item-left  large></ion-icon>
+                    <h1 text-wrap> {{tarefa.nome}} </h1>
+                    <p text-wrap> {{tarefa.descricao}}</p>
+                </ion-item-divider>
             </button>
         </ion-list>
 </ion-content>

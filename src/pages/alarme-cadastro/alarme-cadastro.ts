@@ -28,7 +28,10 @@ export class PGalarmeCadastro implements OnInit{
   Validacao() {
       if(this.dados.nome != "") {
         if (moment(new Date()).format() > this.dados.hora)  this.ExibirAlerta("Alarme não cadastrado!", "Este horário já foi atingido.", false)
-        else this.ExibirAlerta("Parabéns!", "Seu alarme foi cadastrado com sucesso.", true);
+        else {
+          this.ExibirAlerta("Parabéns!", "Seu alarme foi cadastrado com sucesso.", true);
+          this.cadastrarAlarme();
+        }
       }
       else this.ExibirAlerta("Alarme não cadastrado!", "Preencha o campo de nome.", false)
 
@@ -40,11 +43,8 @@ export class PGalarmeCadastro implements OnInit{
       title: _titulo,
       subTitle: _subtitulo,
       buttons: [{
-        text: 'Ok',
-        handler: () => {
-          if (_status) this.cadastrarAlarme();
-      }},
-      ] 
+        text: 'Ok'
+      }] 
     });
     alerta.present();
   }
@@ -55,7 +55,7 @@ export class PGalarmeCadastro implements OnInit{
       message: 'Deseja deletar este alarme?',
       buttons: [
         {
-          text: 'Não!',
+          text: 'Não',
           role: 'cancel',
           handler: () => {
             console.log('Cancel Não');

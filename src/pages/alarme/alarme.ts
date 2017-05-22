@@ -18,18 +18,15 @@ import * as moment from 'moment';
 })
 
 export class PGalarme{
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              public providertarefa: ProviderTarefaProvider,
-              private nativeStorage: NativeStorage,
-              private localNotifications: LocalNotifications) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public providertarefa: ProviderTarefaProvider,
+    private nativeStorage: NativeStorage,
+    private localNotifications: LocalNotifications) {  }
 
-                // Schedule a single notification
-
-                
-      
-  }
-
+  public listaFiltrada: Array<any> = [];
+  Count = 0; 
 
   Notificacao(d){
     this.localNotifications.schedule({
@@ -45,8 +42,6 @@ export class PGalarme{
  
   ionViewDidLoad(){
     this.ChavesItens();
-
-   
   }
   
   ChavesItens(){
@@ -58,9 +53,7 @@ export class PGalarme{
       error => console.error(error)
     );
   }
-
-  public listaFiltrada: Array<any> = [];
-  Count = 0; 
+  
   FiltroItens(_alarmes) {
     _alarmes.forEach(item => {
       this.nativeStorage.getItem(item)
@@ -85,9 +78,7 @@ export class PGalarme{
 
   public Alarmes;
   listaAlarmes(v){
-    this.Alarmes = v;
-    
-      
+    this.Alarmes = v;  
   }
 
   cadastrarAlarme(){

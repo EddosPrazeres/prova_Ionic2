@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 
 import { PGLoginC } from '../pages/login/login';
@@ -13,13 +13,10 @@ import { PGrequisicaoAPI } from '../pages/requisicao-api/requisicao-api';
 import { PGalarme } from '../pages/alarme/alarme';
 import { PGalarmeCadastro } from '../pages/alarme-cadastro/alarme-cadastro';
 
-import { HttpModule } from '@angular/http';
-
-import firebase from 'firebase';
-
 import { ProviderLoginC } from '../providers/login/login';
 import { ProviderTarefaProvider } from '../providers/provider-tarefa/provider-tarefa';
 
+import firebase from 'firebase';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook';
 import { LocalNotifications } from '@ionic-native/local-notifications';

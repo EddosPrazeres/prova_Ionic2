@@ -8,6 +8,11 @@ NodeJS, AngularJS e Ionic 2
 
 npm install
 
+## Plugins usados
+
+- Cordova facebook4
+- NativeStorage
+- LocalNotifications
 
 ### Conteúdo feito
 

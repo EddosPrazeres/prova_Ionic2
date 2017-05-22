@@ -15,10 +15,16 @@
   </ion-fab>
 
   <form (ngSubmit)="Validacao()">
-      <ion-item>
-        <ion-label floating>Nome</ion-label>
-        <ion-input type="text" [(ngModel)]="dados.nome" required name="nome"></ion-input>
-      </ion-item>
+    <ion-card>
+       <ion-item-divider color = 'light'>
+        <ion-icon item-left  name="create"></ion-icon>
+        <h1>Alarme</h1>
+      </ion-item-divider>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" maxlength="10" [(ngModel)]="dados.nome" required name="nome"></ion-input>
+        </ion-item>
    
         <ion-grid>
           <ion-row>
@@ -37,10 +43,10 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      
-
-      <button ion-button type="submit" block color="dark">Salvar alarme</button>
-    </form>
+        <button ion-button type="submit" block color="dark">Salvar alarme</button>
+      </ion-card-content>
+    </ion-card>
+  </form>
 </ion-content>
 
 

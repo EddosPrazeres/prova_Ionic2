@@ -18,14 +18,13 @@ export class PGTarefaLista {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public providertarefa: ProviderTarefaProvider,
-    private nativeStorage: NativeStorage) {
-  }
-  public chaves;
-   public item;
-  ionViewDidLoad(){
-    this.ChavesItens();
+    private nativeStorage: NativeStorage) {  }
 
-     
+  public chaves;
+  public item;
+
+  ionViewDidLoad(){
+    this.ChavesItens(); 
   }
   
   ChavesItens(){

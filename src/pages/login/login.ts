@@ -13,7 +13,6 @@ import { NativeStorage } from '@ionic-native/native-storage';
   templateUrl: 'login.html',
 })
 export class PGLoginC implements OnInit {
-  private _credencial: CredencialC;
   PerfilUsuario: any = null;
   UsuarioAtual:any;
 
@@ -27,8 +26,8 @@ export class PGLoginC implements OnInit {
     //this.loginControleEstado();
   }
 
-    LoginFacebook(){
-     this.loginProvider.LoginFacebook();
+  LoginFacebook(){
+    this.loginProvider.LoginFacebook();
   }
 
   ionViewDidLoad() {
@@ -41,5 +40,9 @@ export class PGLoginC implements OnInit {
               );
       }
     );
+  }
+
+  LoginSemFace(){
+    this.navCtrl.setRoot(PGTarefaLista);
   }
 }

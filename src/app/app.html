@@ -8,9 +8,10 @@
     </ion-header>
 
     <ion-content>  
-
         <ion-card>
+
             <ion-card-content>
+                
                 <ion-item>
                     <ion-avatar item-left  style="zoom:1.5;">
                         <img [src]="dados.foto">
@@ -24,9 +25,8 @@
                 <button ion-button full *ngIf= "dados.nome == 'Sem nome'" color="light" (click)="Recarregar()">
                     Mostrar dados
                 </button>
-                    
+             </ion-card-content>
 
-            </ion-card-content>
         </ion-card>
 
         <ion-list>

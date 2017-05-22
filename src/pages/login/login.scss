@@ -1,8 +1,12 @@
 page-login {
-.profilepicsize  {
-    width: 100% !important;  
-    height : 100% !important;  
-    max-width: 20% !important;  //any size
-    max-height: 20% !important; //any size 
-}
+    .profilepicsize  {
+        width: 100% !important;  
+        height : 100% !important;  
+        max-width: 20% !important;  //any size
+        max-height: 20% !important; //any size 
+    }
+
+    .BG{
+        background-color: blackgreen;
+    }
 }

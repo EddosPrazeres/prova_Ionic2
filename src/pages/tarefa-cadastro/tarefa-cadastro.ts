@@ -23,8 +23,9 @@ export class PGTarefaCadastro implements OnInit{
   ionViewDidLoad() { }
  
   Validacao() {
-      if(this.dados.nome != "" && this.dados.descricao != "") {
+    if(this.dados.nome != "" && this.dados.descricao != "") {
       this.ExibirAlerta("Parabéns!", "Sua tarefa foi cadastrada com sucesso.", true);
+      this.cadastrarTarefas();
     } 
 
     if (this.dados.nome == "" && this.dados.descricao == ""){
@@ -40,11 +41,8 @@ export class PGTarefaCadastro implements OnInit{
       title: _titulo,
       subTitle: _subtitulo,
       buttons: [{
-        text: 'Ok',
-        handler: () => {
-          if (_status) this.cadastrarTarefas();
-      }},
-      ] 
+        text: 'Ok'
+      }] 
     });
     alerta.present();
   }
@@ -55,7 +53,7 @@ export class PGTarefaCadastro implements OnInit{
     message: 'Deseja deletar esta tarefa?',
     buttons: [
       {
-        text: 'Não!',
+        text: 'Não',
         role: 'cancel',
         handler: () => {
           console.log('Cancel Não');

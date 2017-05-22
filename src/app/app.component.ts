@@ -29,6 +29,7 @@ export class MyApp implements OnInit{
     public splashScreen: SplashScreen, 
     public loginProvider: ProviderLoginC,
     private nativeStorage: NativeStorage) {
+      
       platform.ready().then(() => {
       let env = this;
       nativeStorage.getItem('Perfil')
@@ -44,13 +45,12 @@ export class MyApp implements OnInit{
   }
 
   ngOnInit(){
-    
-
     this.MenuPaginas = [
-      { Titulo: 'Lista de tarefas', PG: PGTarefaLista },
-      { Titulo: 'ABC News', PG: PGrequisicaoAPI },
-      { Titulo: 'Alarme', PG: PGalarme }
+      { Titulo: 'Tarefas', PG: PGTarefaLista },
+      { Titulo: 'Alarmes', PG: PGalarme },
+      { Titulo: 'ABC News', PG: PGrequisicaoAPI }
     ];
+    this.Recarregar();
   }
 
   AbrirPagina(_pagina) {
