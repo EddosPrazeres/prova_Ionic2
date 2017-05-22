@@ -13,6 +13,7 @@ npm install
 - Cordova facebook4
 - NativeStorage
 - LocalNotifications
+- Firebase
 
 ### Conteúdo feito
 

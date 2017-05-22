@@ -1,7 +1,6 @@
 import {Injectable, EventEmitter, NgZone} from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { CredencialC } from "../../models/credencial";
 import { Facebook } from '@ionic-native/facebook';
 
 import firebase from "firebase";
